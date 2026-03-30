@@ -1,0 +1,39 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+    typeName: 'Ordini',
+    typeNamePlural: 'Ordini',
+    title: {
+        type: #STANDARD,
+        label: 'Ordini',
+        value: 'Vbeln'
+    }
+}
+
+annotate entity ZC_CAR_P with 
+{
+
+ @UI.facet: [{id: 'Ordini',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Ordini',
+                position: 10 }]
+//--------//                
+    @UI: { lineItem: [ { position: 10, importance: #HIGH , label: 'Nr Ordine'  } ],
+               identification: [{position: 10 }]
+          }
+    Vbeln;
+    @UI: { lineItem: [ { position: 20, importance: #HIGH , label: 'Posizione'  } ],
+               identification: [{position: 20 }]
+          }
+    Posnr;
+    @UI: { lineItem: [ { position: 30, importance: #HIGH , label: 'Schedulazione'  } ],
+               identification: [{position: 30 }]
+          }
+    Etenr;
+    @UI: { lineItem: [ { position: 40, importance: #HIGH , label: 'Data Schedulazione'  } ],
+               identification: [{position: 40 }]
+          }
+    Edatu;
+    
+}

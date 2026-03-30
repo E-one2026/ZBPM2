@@ -1,0 +1,31 @@
+unmanaged implementation in class zbp_i_car unique;
+strict;
+
+define behavior for ZI_CAR alias HC
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+
+  field ( readonly ) Bpmid;
+  create;
+  update;
+  delete;
+// action ( features : instance ) set_status_booked result [1] $self;
+  association _Position { create ( features : instance ); }
+}
+
+define behavior for ZI_CAR_P alias Positions
+implementation in class zbp_i_car_p unique
+//late numbering
+lock dependent by _HC
+authorization dependent by _HC
+//etag master <field_name>
+{
+  field ( readonly ) Vbeln, Posnr, Etenr;
+  update;
+  delete;
+  field ( readonly ) Bpmid;
+  association _HC;
+}

@@ -1,0 +1,81 @@
+@Metadata.layer: #CUSTOMER
+
+@UI:{ headerInfo: {
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: {
+        type: #STANDARD,
+        value: 'TravelID'
+    }
+} }
+
+annotate entity ZC_CAR with 
+{
+
+  @UI.facet: [{
+        id: 'BPM',
+        purpose: #STANDARD,
+        position: 10,
+        label: 'BPM',
+        type: #IDENTIFICATION_REFERENCE
+    },{
+
+        id: 'Ordini',
+        purpose: #STANDARD,
+        position: 20,
+        label: 'Ordini',
+        type: #LINEITEM_REFERENCE,
+        targetElement: '_Position'
+    }]
+
+//-----//
+
+   @UI: {
+           lineItem:       [ { position: 10, importance: #HIGH, label: 'Nr. BPM' } ], //nome primo layout
+           identification: [ { position: 10, label: 'BPM' } ],       //nome secondo layout
+           selectionField: [ { position: 10 } ] }    //parametro di selezione  
+           @EndUserText.label: 'Nr. BPM'   //nome del parametro
+       Bpmid;
+    
+     @UI: {
+           lineItem:       [ { position: 20, importance: #HIGH, label: 'Stato BPM' } ], //nome primo layout
+           identification: [ { position: 20, label: 'Stato BPM' } ],       //nome secondo layout
+           selectionField: [ { position: 20 } ] }    //parametro di selezione  
+           @EndUserText.label: 'Stato BPM'   //nome del parametro
+    Bpmstat;
+    
+        
+    
+     @UI: {
+           lineItem:       [ { position: 22, importance: #HIGH, label: 'Stato Prelievo' } ], //nome primo layout
+           identification: [ { position: 22, label: 'Stato Prelievo' } ],       //nome secondo layout
+           selectionField: [ { position: 22 } ] }    //parametro di selezione  
+           @EndUserText.label: 'Stato Prelievo'   //nome del parametro
+    Bpmstat2;
+    
+
+
+    
+     @UI: {
+           lineItem:       [ { position: 70, importance: #HIGH, label: 'Committente' } ], //nome primo layout
+           identification: [ { position: 70, label: 'Committente' } ],       //nome secondo layout
+           selectionField: [ { position: 70 } ] }    //parametro di selezione  
+           @EndUserText.label: 'Committente'   //nome del parametro     
+           //help ricerca
+           @Consumption.valueHelpDefinition: [{entity:{ element: 'Customer',
+                                                       name: 'ZVH_CUSTOMER' } }]  
+    KunnrAg;
+    
+     @UI: {
+           lineItem:       [ { position: 80, importance: #HIGH, label: 'Destinatario' } ], //nome primo layout
+           identification: [ { position: 80, label: 'Destinatario' } ],       //nome secondo layout
+           selectionField: [ { position: 80 } ] }    //parametro di selezione  
+           @EndUserText.label: 'Destinatario'   //nome del parametro        
+           //help ricerca
+           @Consumption.valueHelpDefinition: [{entity:{ element: 'Customer',
+                                                       name: 'ZVH_CUSTOMER' } }]           
+    KunnrWe;
+    
+ 
+    
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition BPM'
+define service ZSD_CAR {
+  expose ZC_CAR;
+  expose ZC_CAR_P;
+}
